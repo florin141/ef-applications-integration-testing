@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9CD08944-0DE9-4A0F-9E55-241A87D94520}</ProjectGuid>
+    <ProjectGuid>{51A28C98-5717-44A1-A98D-2CD79A2801BC}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Globalmantics.DAL</RootNamespace>
-    <AssemblyName>Globalmantics.DAL</AssemblyName>
+    <RootNamespace>Globalmantics.Logic</RootNamespace>
+    <AssemblyName>Globalmantics.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,12 +23,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -47,38 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Cart.cs" />
-    <Compile Include="Entities\User.cs" />
-    <Compile Include="GlobalmanticsContext.cs" />
-    <Compile Include="Migrations\201702051824189_AddedUser.cs" />
-    <Compile Include="Migrations\201702051824189_AddedUser.Designer.cs">
-      <DependentUpon>201702051824189_AddedUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710211959462_AddedCart.cs" />
-    <Compile Include="Migrations\201710211959462_AddedCart.Designer.cs">
-      <DependentUpon>201710211959462_AddedCart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\GlobalmanticsConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702051824189_AddedUser.resx">
-      <DependentUpon>201702051824189_AddedUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710211959462_AddedCart.resx">
-      <DependentUpon>201710211959462_AddedCart.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Globalmantics.DAL\Globalmantics.DAL.csproj">
+      <Project>{9cd08944-0de9-4a0f-9e55-241a87d94520}</Project>
+      <Name>Globalmantics.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
