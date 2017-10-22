@@ -2,12 +2,10 @@
 using Globalmantics.DAL;
 using Globalmantics.Domain;
 using Globalmantics.Logic;
+using Highway.Data;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Globalmantics.IntegrationTests
 {
@@ -18,9 +16,11 @@ namespace Globalmantics.IntegrationTests
 		[Test]
 		public void Cart_is_initially_empty()
 		{
-			var context = new GlobalmanticsContext();
-			var userService = new UserService(context);
-			var cartService = new CartService(context);
+			var configuration = new GlobalmanticsMappingConfiguration();
+			var context = new DataContext("GlobalmanticsContext", configuration);
+			var repository = new Repository(context);
+			var userService = new UserService(repository);
+			var cartService = new CartService(repository);
 
 			User user = GivenUser(context, userService);
 
@@ -30,19 +30,21 @@ namespace Globalmantics.IntegrationTests
 			cart.CartItems.Count().Should().Be(0);
 		}
 
-		private static User GivenUser(GlobalmanticsContext context, UserService userService)
+		private static User GivenUser(IUnitOfWork unitOfWork, UserService userService)
 		{
 			var user = userService.GetUserByEmail($"test{Guid.NewGuid().ToString()}@globalmantics.com");
-			context.SaveChanges();
+			unitOfWork.Commit();
 			return user;
 		}
 
 		[Test]
 		public void Can_add_item_to_cart()
 		{
-			var context = new GlobalmanticsContext();
-			var userService = new UserService(context);
-			var cartService = new CartService(context);
+			var configuration = new GlobalmanticsMappingConfiguration();
+			var context = new DataContext("GlobalmanticsContext", configuration);
+			var repository = new Repository(context);
+			var userService = new UserService(repository);
+			var cartService = new CartService(repository);
 
 			User user = GivenUser(context, userService);
 
@@ -58,9 +60,11 @@ namespace Globalmantics.IntegrationTests
 		[Test]
 		public void Group_items_of_same_type()
 		{
-			var context = new GlobalmanticsContext();
-			var userService = new UserService(context);
-			var cartService = new CartService(context);
+			var configuration = new GlobalmanticsMappingConfiguration();
+			var context = new DataContext("GlobalmanticsContext", configuration);
+			var repository = new Repository(context);
+			var userService = new UserService(repository);
+			var cartService = new CartService(repository);
 
 			User user = GivenUser(context, userService);
 
