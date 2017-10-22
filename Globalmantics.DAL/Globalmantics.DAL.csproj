@@ -47,10 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Cart.cs" />
-    <Compile Include="Entities\CartItem.cs" />
-    <Compile Include="Entities\CatalogItem.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="GlobalmanticsContext.cs" />
     <Compile Include="Migrations\201702051824189_AddedUser.cs" />
     <Compile Include="Migrations\201702051824189_AddedUser.Designer.cs">
@@ -81,6 +77,13 @@
     <EmbeddedResource Include="Migrations\201710212218343_AddedCartAndCatalogItems.resx">
       <DependentUpon>201710212218343_AddedCartAndCatalogItems.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Globalmantics.Domain\Globalmantics.Domain.csproj">
+      <Project>{3C854E64-8003-4B25-B9FB-128BA0AEB872}</Project>
+      <Name>Globalmantics.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

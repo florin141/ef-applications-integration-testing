@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Globalmantics.DAL.Entities
+namespace Globalmantics.Domain
 {
 	public class CartItem
 	{
