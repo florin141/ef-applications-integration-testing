@@ -1,33 +1,26 @@
-﻿using Globalmantics.DAL;
-using Globalmantics.Domain;
-using System;
-using System.Collections.Generic;
+﻿using Globalmantics.Domain;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Highway.Data;
+using Globalmantics.Logic.Queries;
 
 namespace Globalmantics.Logic
 {
 	public class UserService
 	{
-		private readonly GlobalmanticsContext _context;
+		private readonly IRepository _repository;
 
-		public UserService(GlobalmanticsContext context)
+		public UserService(IRepository repository)
 		{
-			_context = context;
+			_repository = repository;
 		}
 
 		public User GetUserByEmail(string emailAddress)
 		{
-			var user = _context.Users
-				.FirstOrDefault(x => x.Email == emailAddress);
+			var user = _repository.Find(new UserByEmail(emailAddress));
 
 			if (user == null)
 			{
-				user = _context.Users.Add(new User
-				{
-					Email = emailAddress
-				});
+				user = _repository.Context.Add(User.Create(emailAddress));
 			}
 
 			return user;
