@@ -54,5 +54,25 @@ namespace Globalmantics.IntegrationTests
 
 			cart.CartItems.Count().Should().Be(1);
 		}
+
+		[Test]
+		public void Group_items_of_same_type()
+		{
+			var context = new GlobalmanticsContext();
+			var userService = new UserService(context);
+			var cartService = new CartService(context);
+
+			User user = GivenUser(context, userService);
+
+			var cart = cartService.GetCartForUser(user);
+			context.SaveChanges();
+
+			cartService.AddItemToCart(cart, "CAFE-314", 2);
+			cartService.AddItemToCart(cart, "CAFE-314", 1);
+			context.SaveChanges();
+
+			cart.CartItems.Count().Should().Be(1);
+			cart.CartItems.Single().Quantity.Should().Be(3);
+		}
 	}
 }

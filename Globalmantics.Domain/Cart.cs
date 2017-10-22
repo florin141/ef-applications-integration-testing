@@ -30,5 +30,20 @@ namespace Globalmantics.Domain
 				CreatedAt = DateTime.Now
 			};
 		}
+
+		public void AddItem(CatalogItem catalogItem, int quantity)
+		{
+			CartItem cartItem = CartItems
+				.Where(c => c.CatalogItem == catalogItem)
+				.FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cartItem = CartItem.Create(catalogItem);
+				CartItems.Add(cartItem);
+			}
+
+			cartItem.IncreaseQuantity(quantity);
+		}
 	}
 }
