@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Globalmantics.DAL", "Globalmantics.DAL\Globalmantics.DAL.csproj", "{9CD08944-0DE9-4A0F-9E55-241A87D94520}"
 EndProject
@@ -12,6 +12,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{23E87A13-EAF9-4F33-87EF-08BDAB78DF86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Globalmantics.IntegrationTests", "Tests\Globalmantics.IntegrationTests\Globalmantics.IntegrationTests.csproj", "{C1CC5D39-4A20-4E98-8A73-65E9072C8775}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Globalmantics.UnitTests", "Tests\Globalmantics.UnitTests\Globalmantics.UnitTests.csproj", "{792C3EF2-D77C-49AE-9DF4-07FD63384F38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Globalmantics.Domain", "Globalmantics.Domain\Globalmantics.Domain.csproj", "{3C854E64-8003-4B25-B9FB-128BA0AEB872}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,11 +39,23 @@ Global
 		{C1CC5D39-4A20-4E98-8A73-65E9072C8775}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1CC5D39-4A20-4E98-8A73-65E9072C8775}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1CC5D39-4A20-4E98-8A73-65E9072C8775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792C3EF2-D77C-49AE-9DF4-07FD63384F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792C3EF2-D77C-49AE-9DF4-07FD63384F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792C3EF2-D77C-49AE-9DF4-07FD63384F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792C3EF2-D77C-49AE-9DF4-07FD63384F38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C854E64-8003-4B25-B9FB-128BA0AEB872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C854E64-8003-4B25-B9FB-128BA0AEB872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C854E64-8003-4B25-B9FB-128BA0AEB872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C854E64-8003-4B25-B9FB-128BA0AEB872}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C1CC5D39-4A20-4E98-8A73-65E9072C8775} = {23E87A13-EAF9-4F33-87EF-08BDAB78DF86}
+		{792C3EF2-D77C-49AE-9DF4-07FD63384F38} = {23E87A13-EAF9-4F33-87EF-08BDAB78DF86}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C944C84-C0DB-4D1A-976B-90884EFDE29E}
 	EndGlobalSection
 EndGlobal
