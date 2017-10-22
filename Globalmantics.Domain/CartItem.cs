@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Highway.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace Globalmantics.Domain
 {
-	public class CartItem
+	public class CartItem : IIdentifiable<int>
 	{
+		int IIdentifiable<int>.Id
+		{
+			get { return CartItemId; }
+			set { CartItemId = value; }
+		}
+
 		private CartItem() { }
 
 		public int CartItemId { get; private set; }
