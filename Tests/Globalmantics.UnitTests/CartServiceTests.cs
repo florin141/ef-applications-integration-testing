@@ -37,7 +37,7 @@ namespace Globalmantics.UnitTests
 		}
 
 		[Test]
-		public void Can_load_cart_with_one_items()
+		public void Can_load_cart_with_one_item()
 		{
 			var context = new InMemoryDataContext();
 			InitializeCartWithOneItem(context);
