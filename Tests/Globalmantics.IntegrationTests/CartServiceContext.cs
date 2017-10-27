@@ -1,5 +1,6 @@
 ﻿using Globalmantics.Logic;
 using Highway.Data;
+using System;
 
 namespace Globalmantics.IntegrationTests
 {
@@ -12,5 +13,6 @@ namespace Globalmantics.IntegrationTests
 		public DataContext Context { get; set; }
 		public UserService UserService { get; set; }
 		public CartService CartService { get; set; }
+		public string EmailAddress { get; } = $"test{Guid.NewGuid().ToString()}@globalmantics.com";
 	}
 }
