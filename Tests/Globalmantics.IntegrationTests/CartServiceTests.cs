@@ -20,7 +20,7 @@ namespace Globalmantics.IntegrationTests
 			var context = new DataContext("GlobalmanticsContext", configuration);
 			var repository = new Repository(context);
 			var userService = new UserService(repository);
-			var cartService = new CartService(repository);
+			CartService cartService = GivenCartService(repository);
 
 			User user = GivenUser(context, userService);
 
@@ -28,6 +28,11 @@ namespace Globalmantics.IntegrationTests
 			context.SaveChanges();
 
 			cart.CartItems.Count().Should().Be(0);
+		}
+
+		private static CartService GivenCartService(Repository repository)
+		{
+			return new CartService(repository, new MockLog());
 		}
 
 		private static User GivenUser(IUnitOfWork unitOfWork, UserService userService)
@@ -44,7 +49,7 @@ namespace Globalmantics.IntegrationTests
 			var context = new DataContext("GlobalmanticsContext", configuration);
 			var repository = new Repository(context);
 			var userService = new UserService(repository);
-			var cartService = new CartService(repository);
+			var cartService = GivenCartService(repository);
 
 			User user = GivenUser(context, userService);
 
@@ -64,7 +69,7 @@ namespace Globalmantics.IntegrationTests
 			var context = new DataContext("GlobalmanticsContext", configuration);
 			var repository = new Repository(context);
 			var userService = new UserService(repository);
-			var cartService = new CartService(repository);
+			var cartService = GivenCartService(repository);
 
 			User user = GivenUser(context, userService);
 
@@ -89,7 +94,7 @@ namespace Globalmantics.IntegrationTests
 
 			var repository = new Repository(context);
 			var userService = new UserService(repository);
-			var cartService = new CartService(repository);
+			var cartService = GivenCartService(repository);
 
 			var user = userService.GetUserByEmail("test@globalmantics.com");
 			context.Commit();

@@ -21,7 +21,7 @@ namespace Globalmantics.UnitTests
 			var context = new InMemoryDataContext();
 			var repository = new Repository(context);
 			var userService = new UserService(repository);
-			var cartService = new CartService(repository);
+			CartService cartService = GivenCartService(repository);
 
 			var user = userService.GetUserByEmail("test@globalmantics.com");
 			context.Commit();
@@ -29,6 +29,11 @@ namespace Globalmantics.UnitTests
 			context.Commit();
 
 			cart.CartItems.Count().Should().Be(0);
+		}
+
+		private static CartService GivenCartService(Repository repository)
+		{
+			return new CartService(repository, new MockLog());
 		}
 
 		[Test]
@@ -39,7 +44,7 @@ namespace Globalmantics.UnitTests
 
 			var repository = new Repository(context);
 			var userService = new UserService(repository);
-			var cartService = new CartService(repository);
+			var cartService = GivenCartService(repository);
 
 			var user = userService.GetUserByEmail("test@globalmantics.com");
 			context.Commit();
