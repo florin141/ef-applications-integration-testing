@@ -1,38 +1,20 @@
-﻿using Globalmantics.DAL;
-using Globalmantics.Domain;
+﻿using Globalmantics.Domain;
 using Globalmantics.Logic;
-using Highway.Data;
-using System;
 
 namespace Globalmantics.IntegrationTests
 {
-	public class CartServiceContext
+	public class CartServiceContext : UserServiceContext
 	{
-		public CartServiceContext()
-		{
-		}
-
-		public DataContext Context { get; set; }
-		public UserService UserService { get; set; }
 		public CartService CartService { get; set; }
-		public string EmailAddress { get; } = $"test{Guid.NewGuid().ToString()}@globalmantics.com";
+
+		protected CartServiceContext()
+		{
+			CartService = new CartService(Repository, new MockLog());
+		}
 
 		public static CartServiceContext GivenServices()
 		{
-			var configuration = new GlobalmanticsMappingConfiguration();
-			var context = new DataContext("GlobalmanticsContext", configuration);
-			var repository = new Repository(context);
-			var userService = new UserService(repository);
-			CartService cartService = new CartService(repository, new MockLog());
-
-			var services = new CartServiceContext
-			{
-				Context = context,
-				UserService = userService,
-				CartService = cartService
-			};
-
-			return services;
+			return new CartServiceContext();
 		}
 
 		public Cart WhenLoadCart()
@@ -42,6 +24,7 @@ namespace Globalmantics.IntegrationTests
 
 			var cart = CartService.GetCartForUser(user);
 			Context.SaveChanges();
+
 			return cart;
 		}
 

@@ -18,16 +18,12 @@ namespace Globalmantics.IntegrationTests
 		[Test]
 		public void Can_create_user()
 		{
-			var configuration = new GlobalmanticsMappingConfiguration();
-			var context = new DataContext("GlobalmanticsContext", configuration);
-			var repository = new Repository(context);
-			var userService = new UserService(repository);
+			UserServiceContext service = UserServiceContext.GiveServices();
 
-			User user = userService.GetUserByEmail("test@globalmantics.com");
-			context.SaveChanges();
+			User user = service.WhenGetUserByEmail();
 
 			user.UserId.Should().NotBe(0);
-			user.Email.Should().Be("test@globalmantics.com");
+			user.Email.Should().Be(service.EmailAddress);
 		}
 	}
 }
